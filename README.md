@@ -1,4 +1,4 @@
-# Polarity Primitives
+# Polarity
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -11,7 +11,7 @@
 `Polarity` classifies a value as `.positive`, `.negative`, or `.neutral`. Unlike a two-valued sign, neutral is a first-class case — "uncharged" is not "zero magnitude" — so physics and electrical contexts (electric charge, magnetic poles, electrode designation) can model the absence of polarity honestly. `opposite` swaps positive and negative while leaving neutral fixed.
 
 ```swift
-import Polarity_Primitives
+import Polarity
 
 let charge: Polarity = .positive
 
@@ -24,8 +24,8 @@ print(Polarity.neutral.opposite)  // neutral — neutral is its own opposite
 `Polarity.Value<Payload>` pairs a polarity with a payload, so a measurement can travel with its sign as one value:
 
 ```swift
-import Pair_Primitives
-import Polarity_Primitives
+import Pair
+import Polarity
 
 // A charge magnitude tagged with its polarity.
 let reading: Polarity.Value<Double> = Pair(.negative, 1.6e-19)
@@ -42,7 +42,7 @@ print(reading.second)  // 1.6e-19
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-polarity-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-polarity.git", branch: "main")
 ]
 ```
 
@@ -50,7 +50,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Polarity Primitives", package: "swift-polarity-primitives"),
+        .product(name: "Polarity", package: "swift-polarity"),
     ]
 )
 ```
@@ -65,8 +65,8 @@ Two library products. Depends only on the `Pair` primitive, which it re-exports 
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Polarity Primitives` | `Sources/Polarity Primitives/` | The `Polarity` enum (`.positive` / `.negative` / `.neutral`), `opposite` and the prefix `!` operator, the `isCharged` / `isPositive` / `isNegative` / `isNeutral` queries, and the `Polarity.Value<Payload>` tagged-pair typealias. |
-| `Polarity Primitives Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
+| `Polarity` | `Sources/Polarity/` | The `Polarity` enum (`.positive` / `.negative` / `.neutral`), `opposite` and the prefix `!` operator, the `isCharged` / `isPositive` / `isNegative` / `isNeutral` queries, and the `Polarity.Value<Payload>` tagged-pair typealias. |
+| `Polarity Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
 
 Foundation-free.
 

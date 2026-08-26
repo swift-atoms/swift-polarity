@@ -1,4 +1,4 @@
-public import Pair_Primitives
+public import Pair
 
 public enum Polarity: Sendable, Hashable, CaseIterable {
 
