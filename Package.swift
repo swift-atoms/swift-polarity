@@ -17,36 +17,35 @@ let package = Package(
             targets: ["Polarity"]
         ),
         .library(
-            name: "Polarity Test Support",
-            targets: ["Polarity Test Support"]
+            name: "Polarity Standard Library Integration",
+            targets: ["Polarity Standard Library Integration"]
+        ),
+        .library(
+            name: "Polarity Apple Foundation Integration",
+            targets: ["Polarity Apple Foundation Integration"]
         ),
     ],
-    dependencies: [
-        .package(
-            url: "https://github.com/swift-molecules/swift-pair.git",
-            branch: "main"
-        )
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Polarity",
-            dependencies: [
-                .product(name: "Pair", package: "swift-pair")
-            ]
+            dependencies: []
         ),
         .target(
-            name: "Polarity Test Support",
+            name: "Polarity Standard Library Integration",
+            dependencies: ["Polarity"]
+        ),
+        .target(
+            name: "Polarity Apple Foundation Integration",
             dependencies: [
-                "Polarity"
-            ],
-            path: "Tests/Support"
+                "Polarity",
+                "Polarity Standard Library Integration",
+            ]
         ),
         .testTarget(
             name: "Polarity Tests",
-            dependencies: [
-                "Polarity",
-                "Polarity Test Support",
-            ]
+            dependencies: ["Polarity"],
+            path: "Tests/Polarity Tests"
         ),
     ],
     swiftLanguageModes: [.v6]

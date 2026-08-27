@@ -1,6 +1,4 @@
-public import Pair
-
-public enum Polarity: Sendable, Hashable, CaseIterable {
+public enum Polarity: Sendable, Hashable {
 
     case positive
 
@@ -45,12 +43,3 @@ extension Polarity {
     @inlinable
     public var isNeutral: Bool { self == .neutral }
 }
-
-extension Polarity {
-
-    public typealias Value<Payload> = Pair<Polarity, Payload>
-}
-
-#if !hasFeature(Embedded)
-    extension Polarity: Codable {}
-#endif

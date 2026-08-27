@@ -21,20 +21,7 @@ print((!charge))          // negative — prefix ! is opposite
 print(Polarity.neutral.opposite)  // neutral — neutral is its own opposite
 ```
 
-`Polarity.Value<Payload>` pairs a polarity with a payload, so a measurement can travel with its sign as one value:
-
-```swift
-import Pair
-import Polarity
-
-// A charge magnitude tagged with its polarity.
-let reading: Polarity.Value<Double> = Pair(.negative, 1.6e-19)
-
-print(reading.first)   // negative
-print(reading.second)  // 1.6e-19
-```
-
-`Polarity` is `Hashable`, `CaseIterable`, `Sendable`, and (outside Embedded) `Codable`, and exposes `isCharged`, `isPositive`, `isNegative`, and `isNeutral` for case queries.
+`Polarity` is `Hashable`, `CaseIterable`, `Sendable`, and (outside Embedded) `Codable`, and exposes `isCharged`, `isPositive`, `isNegative`, and `isNeutral` for case queries. The `Polarity.Value<Payload>` tagged-pair typealias lives in the `swift-polarity-pair` integration package.
 
 ---
 
@@ -61,12 +48,15 @@ Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 
 
 ## Architecture
 
-Two library products. Depends only on the `Pair` primitive, which it re-exports for `Polarity.Value`.
+Three library products. No package dependencies.
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Polarity` | `Sources/Polarity/` | The `Polarity` enum (`.positive` / `.negative` / `.neutral`), `opposite` and the prefix `!` operator, the `isCharged` / `isPositive` / `isNegative` / `isNeutral` queries, and the `Polarity.Value<Payload>` tagged-pair typealias. |
-| `Polarity Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
+| `Polarity` | `Sources/Polarity/` | The `Polarity` enum (`.positive` / `.negative` / `.neutral`), `opposite` and the prefix `!` operator, and the `isCharged` / `isPositive` / `isNegative` / `isNeutral` queries. |
+| `Polarity Standard Library Integration` | `Sources/Polarity Standard Library Integration/` | Standard-library conformances: `CaseIterable` and (outside Embedded) `Codable`. |
+| `Polarity Apple Foundation Integration` | `Sources/Polarity Apple Foundation Integration/` | The only module allowed to import Foundation. |
+
+Pair integration (`Polarity.Value<Payload>`) lives in `swift-molecules/swift-polarity-pair`.
 
 Foundation-free.
 
