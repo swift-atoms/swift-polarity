@@ -1,4 +1,5 @@
-import Polarity
+import Pair
+import Polarity_Test_Support
 import Testing
 
 @Suite
@@ -11,10 +12,9 @@ struct `Polarity Tests` {
 extension `Polarity Tests`.Unit {
 
     @Test
-    func `Opposite inverts charge and preserves neutrality`() {
-        #expect(Polarity.opposite(of: .positive) == .negative)
-        #expect(Polarity.opposite(of: .negative) == .positive)
-        #expect(Polarity.opposite(of: .neutral) == .neutral)
-        #expect(!Polarity.positive == .negative)
+    func `Polarity Value typealias resolves through Pair`() {
+        let value: Polarity.Value<Int> = Pair(.positive, 4)
+        #expect(value.first == .positive)
+        #expect(value.second == 4)
     }
 }
