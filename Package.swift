@@ -16,14 +16,10 @@ let package = Package(
             name: "Polarity",
             targets: ["Polarity"]
         ),
-        .library(
-            name: "Polarity Test Support",
-            targets: ["Polarity Test Support"]
-        ),
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-pair.git",
+            url: "https://github.com/swift-atoms/swift-pair.git",
             branch: "main"
         )
     ],
@@ -34,18 +30,10 @@ let package = Package(
                 .product(name: "Pair", package: "swift-pair")
             ]
         ),
-        .target(
-            name: "Polarity Test Support",
-            dependencies: [
-                "Polarity"
-            ],
-            path: "Tests/Support"
-        ),
         .testTarget(
             name: "Polarity Tests",
             dependencies: [
-                "Polarity",
-                "Polarity Test Support",
+                .target(name: "Polarity"),
             ]
         ),
     ],

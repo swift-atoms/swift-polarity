@@ -42,7 +42,7 @@ print(reading.second)  // 1.6e-19
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-molecules/swift-polarity.git", branch: "main")
+    .package(url: "https://github.com/swift-atoms/swift-polarity.git", branch: "main")
 ]
 ```
 
@@ -61,12 +61,11 @@ Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 
 
 ## Architecture
 
-Two library products. Depends only on the `Pair` primitive, which it re-exports for `Polarity.Value`.
+One library product. Depends only on `Pair`, which it re-exports for `Polarity.Value`.
 
 | Product | Target | Purpose |
 |---------|--------|---------|
 | `Polarity` | `Sources/Polarity/` | The `Polarity` enum (`.positive` / `.negative` / `.neutral`), `opposite` and the prefix `!` operator, the `isCharged` / `isPositive` / `isNegative` / `isNeutral` queries, and the `Polarity.Value<Payload>` tagged-pair typealias. |
-| `Polarity Test Support` | `Tests/Support/` | Re-exports the main target for test consumers. |
 
 Foundation-free.
 

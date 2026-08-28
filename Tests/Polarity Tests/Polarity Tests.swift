@@ -1,5 +1,5 @@
 import Pair
-import Polarity_Test_Support
+import Polarity
 import Testing
 
 @Suite
