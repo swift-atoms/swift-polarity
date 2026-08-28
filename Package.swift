@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-polarity-primitives",
+    name: "swift-polarity",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -13,39 +13,27 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Polarity Primitives",
-            targets: ["Polarity Primitives"]
-        ),
-        .library(
-            name: "Polarity Primitives Test Support",
-            targets: ["Polarity Primitives Test Support"]
+            name: "Polarity",
+            targets: ["Polarity"]
         ),
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-pair-primitives.git",
+            url: "https://github.com/swift-atoms/swift-pair.git",
             branch: "main"
         )
     ],
     targets: [
         .target(
-            name: "Polarity Primitives",
+            name: "Polarity",
             dependencies: [
-                .product(name: "Pair Primitives", package: "swift-pair-primitives")
+                .product(name: "Pair", package: "swift-pair")
             ]
         ),
-        .target(
-            name: "Polarity Primitives Test Support",
-            dependencies: [
-                "Polarity Primitives"
-            ],
-            path: "Tests/Support"
-        ),
         .testTarget(
-            name: "Polarity Primitives Tests",
+            name: "Polarity Tests",
             dependencies: [
-                "Polarity Primitives",
-                "Polarity Primitives Test Support",
+                .target(name: "Polarity"),
             ]
         ),
     ],
