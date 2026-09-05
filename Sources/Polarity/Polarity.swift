@@ -5,8 +5,6 @@ public enum Polarity: Sendable, Hashable, CaseIterable {
     case positive
 
     case negative
-
-    case neutral
 }
 
 extension Polarity {
@@ -16,7 +14,6 @@ extension Polarity {
         switch polarity {
         case .positive: return .negative
         case .negative: return .positive
-        case .neutral: return .neutral
         }
     }
 
@@ -32,18 +29,12 @@ extension Polarity {
 }
 
 extension Polarity {
-
-    @inlinable
-    public var isCharged: Bool { self != .neutral }
-
     @inlinable
     public var isPositive: Bool { self == .positive }
 
     @inlinable
     public var isNegative: Bool { self == .negative }
 
-    @inlinable
-    public var isNeutral: Bool { self == .neutral }
 }
 
 extension Polarity {
