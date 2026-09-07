@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(name: "Polarity", targets: ["Polarity"]),
-        .library(name: "Polarity Standard Library Integration", targets: ["Polarity Standard Library Integration"]),
-        .library(name: "Polarity Foundation Library Integration", targets: ["Polarity Foundation Library Integration"]),
+
+        .library(name: "Polarity Foundation Integration", targets: ["Polarity Foundation Integration"]),
         .library(name: "Polarity Test Support", targets: ["Polarity Test Support"]),
     ],
     dependencies: [
@@ -31,20 +31,13 @@ let package = Package(
             ],
             path: "Sources/Polarity"
         ),
+        
         .target(
-            name: "Polarity Standard Library Integration",
+            name: "Polarity Foundation Integration",
             dependencies: [
                 .target(name: "Polarity"),
             ],
-            path: "Sources/Polarity Standard Library Integration"
-        ),
-        .target(
-            name: "Polarity Foundation Library Integration",
-            dependencies: [
-                .target(name: "Polarity"),
-                .target(name: "Polarity Standard Library Integration"),
-            ],
-            path: "Sources/Polarity Foundation Library Integration"
+            path: "Sources/Polarity Foundation Integration"
         ),
         .target(
             name: "Polarity Test Support",
@@ -58,8 +51,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Polarity"),
                 .target(name: "Polarity Test Support"),
-                .target(name: "Polarity Standard Library Integration"),
-                .target(name: "Polarity Foundation Library Integration"),
+                .target(name: "Polarity Foundation Integration"),
             ],
             path: "Tests/Polarity Tests"
         ),
