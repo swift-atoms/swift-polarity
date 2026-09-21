@@ -39,7 +39,7 @@ extension Polarity {
 
 extension Polarity {
 
-    public typealias Value<Payload> = Pair<Polarity, Payload>
+    public typealias Value<Payload: ~Copyable & ~Escapable> = Pair<Polarity, Payload>
 }
 
 #if !hasFeature(Embedded)
