@@ -43,5 +43,5 @@ extension Polarity {
 }
 
 #if !hasFeature(Embedded)
-extension Polarity: Swift.Codable {}
+extension Polarity: Swift::Codable {}
 #endif
