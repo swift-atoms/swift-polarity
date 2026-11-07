@@ -2,14 +2,23 @@ import Pair
 import Polarity
 import Testing
 
-@Suite
-struct `Polarity preserves binary opposites and paired values` {
+enum `Polarity Tests` {}
+
+extension `Polarity Tests` {
+    @Suite
+    struct `Polarity preserves binary opposites and paired values` {
+    }
+}
+
+extension `Polarity Tests`.`Polarity preserves binary opposites and paired values` {
     @Suite struct `Polarity preserves binary opposites and paired values in their public representations` {}
+
     @Suite struct `No additional polarity edge cases are defined` {}
+
     @Suite struct `No additional polarity integration cases are defined` {}
 }
 
-extension `Polarity preserves binary opposites and paired values`.`Polarity preserves binary opposites and paired values in their public representations` {
+extension `Polarity Tests`.`Polarity preserves binary opposites and paired values`.`Polarity preserves binary opposites and paired values in their public representations` {
 
     @Test
     func `Polarity is binary and opposite is involutive`() {
