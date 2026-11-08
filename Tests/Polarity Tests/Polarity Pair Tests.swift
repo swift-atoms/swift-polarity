@@ -1,12 +1,14 @@
 import Polarity
 import Testing
 
-@Suite
-struct `Polarity Pair Tests` {
-    @Suite struct Unit {}
+extension `Polarity Pair Tests`.`Polarity Pair Tests` {
+    @Suite
+    struct `Polarity Pair Tests` {
+        @Suite struct Unit {}
+    }
 }
 
-extension `Polarity Pair Tests`.Unit {
+extension `Polarity Pair Tests`.`Polarity Pair Tests`.Unit {
 
     @Test
     func `Polarity Value typealias resolves through Pair`() {
